@@ -1,4 +1,4 @@
-# tourism-map
+# tourism
 
 > A Vue.js project
 
