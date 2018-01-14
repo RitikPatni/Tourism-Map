@@ -8,7 +8,6 @@
 export default {
   name: "app"
 };
-
 </script>
 
 <style>
@@ -22,5 +21,11 @@ body {
   padding: 0;
   border: none;
   outline: none;
+}
+.google-map {
+  width: 800px;
+  height: 600px;
+  margin: 0 auto;
+  background: gray;
 }
 </style>

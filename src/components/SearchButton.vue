@@ -1,6 +1,9 @@
 <template>
   <div class="search">
-   <router-link to="/SearchBar" class="search-button"><i class="fa fa-search"></i></router-link> 
+   <router-link to="/SearchBar" class="search-button"><i class="fa fa-search"></i></router-link>
+     <google-map
+  name="example"
+></google-map>
   </div>
 </template>
 
@@ -9,6 +12,21 @@ export default {
   name: "SearchButton",
   data() {
     return {};
+  },
+  name: "googleMaps",
+  props: ["name"],
+  data() {
+    return {
+      mapName: this.name + "-map"
+    };
+  },
+  mounted: function() {
+    const element = document.getElementById(this.mapName);
+    const options = {
+      zoom: 14,
+      center: new google.maps.LatLng(51.501527, -0.1921837)
+    };
+    const map = new google.maps.Map(element, options);
   }
 };
 </script>
