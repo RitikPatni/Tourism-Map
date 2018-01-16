@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  name: "googleMap",
+  name: "google-map",
   props: ["name"],
   data: function() {
     return {
