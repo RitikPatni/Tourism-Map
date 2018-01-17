@@ -3,7 +3,6 @@ import Router from 'vue-router'
 import * as VueGoogleMaps from 'vue2-google-maps'
 import SearchButton from '@/components/SearchButton'
 import SearchBar from '@/components/SearchBar'
-import googleMap from '@/components/googleMaps'
 import testMap from '@/components/testMap'
 
 Vue.use(Router),
