@@ -1,31 +1,40 @@
 <template>
   <div id="app">
-    <router-view/>
+    <Header></Header>
+    <div class="wrapper">
+      <SideNav></SideNav>
+      <googleMap name="example"></googleMap>
+    </div>
   </div>
 </template>
 
 <script>
+import Header from "./components/Header.vue";
+import SideNav from "./components/SideNav";
+import googleMap from "./components/Map";
 export default {
-  name: "app"
+  name: "app",
+  components: {
+    Header,
+    SideNav,
+    googleMap
+  }
 };
 </script>
+<style>
+.wrapper {
+  display: flex;
+}
+</style>
+
 
 <style>
 @import url("https://fonts.googleapis.com/css?family=Roboto");
-body {
-  font-family: "Roboto", sans-serif;
-}
+
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  border: none;
-  outline: none;
-}
-.google-map {
-  width: 800px;
-  height: 600px;
-  margin: 0 auto;
-  background: gray;
+  margin: 0%;
+  padding: 0%;
+  border: 0px;
+  font-family: "Roboto", sans-serif;
 }
 </style>
