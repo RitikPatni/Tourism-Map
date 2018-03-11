@@ -34,6 +34,7 @@ export default {
     this.bounds = new google.maps.LatLngBounds();
     const element = document.getElementById(this.mapName);
     const mapCentre = this.markerCoordinates[0];
+    let mapZoomStatus = false;
     const options = {
       center: new google.maps.LatLng(mapCentre.latitude, mapCentre.longitude)
     };
@@ -47,14 +48,19 @@ export default {
       });
       this.markers.push(marker);
       this.map.fitBounds(this.bounds.extend(position));
-      marker.addListener("click", function() {
-        this.map.setZoom(12);
-        this.map.setCenter(marker.getPosition());
-        marker.setAnimation(google.maps.Animation.BOUNCE);
-        setTimeout(function() {
-          marker.setAnimation(null);
-        }, 1500);
-      });
+      {
+        marker.addListener("click", function() {
+          if (!mapZoomStatus) {
+            this.map.setZoom(12);
+            this.map.setCenter(marker.getPosition());
+            mapZoomStatus = true;
+          } else {
+            this.map.setZoom(10);
+            this.map.setCenter(marker.getPosition());
+            mapZoomStatus = false;
+          }
+        });
+      }
     });
   }
 };
