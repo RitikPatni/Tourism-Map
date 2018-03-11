@@ -50,6 +50,7 @@ export default {
       this.map.fitBounds(this.bounds.extend(position));
       {
         marker.addListener("click", function() {
+          console.log(this.getPosition().lat(), this.getPosition().lng());
           if (!mapZoomStatus) {
             this.map.setZoom(12);
             this.map.setCenter(marker.getPosition());
