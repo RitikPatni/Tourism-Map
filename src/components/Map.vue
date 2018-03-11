@@ -10,16 +10,19 @@ export default {
       mapName: this.name + "-map",
       markerCoordinates: [
         {
-          latitude: 51.501527,
-          longitude: -0.1921837
+          latitude: 26.5,
+          longitude: 75,
+          name: "Hawa Mahal"
         },
         {
-          latitude: 51.505874,
-          longitude: -0.1838486
+          latitude: 26.7,
+          longitude: 75.3,
+          name: "NaharGarh"
         },
         {
-          latitude: 51.4998973,
-          longitude: -0.202432
+          latitude: 26.3,
+          longitude: 75.1,
+          name: "Udaipur"
         }
       ],
       map: null,
@@ -39,10 +42,19 @@ export default {
       const position = new google.maps.LatLng(coord.latitude, coord.longitude);
       const marker = new google.maps.Marker({
         position,
-        map: this.map
+        map: this.map,
+        title: coord.name
       });
       this.markers.push(marker);
       this.map.fitBounds(this.bounds.extend(position));
+      marker.addListener("click", function() {
+        this.map.setZoom(12);
+        this.map.setCenter(marker.getPosition());
+        marker.setAnimation(google.maps.Animation.BOUNCE);
+        setTimeout(function() {
+          marker.setAnimation(null);
+        }, 1500);
+      });
     });
   }
 };
