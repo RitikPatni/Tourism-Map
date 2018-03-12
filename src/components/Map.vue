@@ -10,30 +10,36 @@ export default {
       mapName: this.name + "-map",
       markerCoordinates: [
         {
-          latitude: 26.5,
-          longitude: 75,
-          name: "Hawa Mahal"
-        },
-        {
-          latitude: 26.7,
-          longitude: 75.3,
+          latitude: 26.9372,
+          longitude: 75.8152,
           name: "NaharGarh"
         },
         {
-          latitude: 26.3,
-          longitude: 75.1,
-          name: "Udaipur"
+          latitude: 26.9851,
+          longitude: 75.8456,
+          name: "JaiGarh"
+        },
+        {
+          latitude: 26.9258,
+          longitude: 75.8237,
+          name: "CityPalace"
         }
       ],
       map: null,
       bounds: null,
-      markers: []
+      markers: [],
+      show: true
     };
   },
   mounted: function() {
     this.bounds = new google.maps.LatLngBounds();
     const element = document.getElementById(this.mapName);
     const mapCentre = this.markerCoordinates[0];
+    const foursquareUrl = "https://api.foursquare.com/v2/venues/search?ll=";
+    const foursquareSecretKey =
+      "&client_secret=RE40UE33TGTIIVZEIWIRW3KNHDG3E3UPRLZLE40O1PDDXOIP&v=20180312";
+    const foursquareClientId =
+      "&limit=1&client_id=JVYYDZMWQWFNXS5EAYNSCTUKMA2DWO2ZNJRMFAIQXXT5WX5S";
     let mapZoomStatus = false;
     const options = {
       center: new google.maps.LatLng(mapCentre.latitude, mapCentre.longitude)
@@ -50,7 +56,28 @@ export default {
       this.map.fitBounds(this.bounds.extend(position));
       {
         marker.addListener("click", function() {
-          console.log(this.getPosition().lat(), this.getPosition().lng());
+          let markerLat = this.getPosition().lat();
+          let markerLng = this.getPosition().lng();
+          let cityDetails = "";
+          let endPoint =
+            foursquareUrl +
+            markerLat +
+            "," +
+            markerLng +
+            foursquareClientId +
+            foursquareSecretKey;
+          console.log(endPoint);
+          fetch(endPoint)
+            .then(function(response) {
+              return response.json();
+            })
+            .then(function(myJson) {
+              console.log(myJson);
+            });
+          // fetch(endPoint)
+          //   .then(blob => blob.json())
+          //   .then(data => cityDetails.push(...data));
+          // console.log(cityDetails);
           if (!mapZoomStatus) {
             this.map.setZoom(12);
             this.map.setCenter(marker.getPosition());
@@ -68,8 +95,8 @@ export default {
 </script>
 <style scoped>
 .google-map {
-  width: 800px;
-  height: 600px;
+  width: 100%;
+  height: 100vh;
   margin: 0 auto;
   background: gray;
 }
