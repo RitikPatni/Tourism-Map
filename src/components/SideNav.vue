@@ -8,7 +8,6 @@
     </transition>
   </div>
 </template>
-
 <style scoped>
 .sidenav {
   width: 300px;

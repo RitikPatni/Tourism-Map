@@ -2,6 +2,7 @@
   <div class="google-map" :id="mapName"></div>
 </template>
 <script>
+import axios from "axios";
 export default {
   name: "googleMap",
   props: ["name"],
@@ -59,25 +60,22 @@ export default {
           let markerLat = this.getPosition().lat();
           let markerLng = this.getPosition().lng();
           let cityDetails = "";
-          let endPoint =
-            foursquareUrl +
-            markerLat +
-            "," +
-            markerLng +
-            foursquareClientId +
-            foursquareSecretKey;
-          console.log(endPoint);
-          fetch(endPoint)
+          let endPoint = `${foursquareUrl}${markerLat},${markerLng}${foursquareClientId}${foursquareSecretKey}`;
+          axios
+            .get(endPoint)
             .then(function(response) {
-              return response.json();
+              console.log(response);
+              // getting data out from local json
+              doSomething(response);
             })
-            .then(function(myJson) {
-              console.log(myJson);
+            .catch(function(error) {
+              console.log(error);
             });
-          // fetch(endPoint)
-          //   .then(blob => blob.json())
-          //   .then(data => cityDetails.push(...data));
-          // console.log(cityDetails);
+          // calling data
+          function doSomething(data) {
+            console.log(data);
+              $emit("clicked", data);
+          }
           if (!mapZoomStatus) {
             this.map.setZoom(12);
             this.map.setCenter(marker.getPosition());
@@ -95,8 +93,8 @@ export default {
 </script>
 <style scoped>
 .google-map {
-  width: 100%;
-  height: 100vh;
+  width: 60vw;
+  height: 90vh;
   margin: 0 auto;
   background: gray;
 }
