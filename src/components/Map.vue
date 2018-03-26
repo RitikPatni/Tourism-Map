@@ -4,12 +4,27 @@
 <script>
 import axios from "axios";
 export default {
-  name: "googleMap",
+  name: "google-map",
   props: ["name"],
   data: function() {
     return {
       mapName: this.name + "-map",
       markerCoordinates: [
+        {
+          latitude: 20.5937,
+          longitude: 78.9629,
+          name: "Centre Of India"
+        },
+        {
+          latitude: 34.083656,
+          longitude: 74.797371,
+          name: "Srinagar"
+        },
+        {
+          latitude: 8.0883,
+          longitude: 77.5385,
+          name: "KanyaKumari"
+        },
         {
           latitude: 26.9372,
           longitude: 75.8152,
@@ -36,17 +51,12 @@ export default {
     this.bounds = new google.maps.LatLngBounds();
     const element = document.getElementById(this.mapName);
     const mapCentre = this.markerCoordinates[0];
-    const foursquareUrl = "https://api.foursquare.com/v2/venues/search?ll=";
-    const foursquareSecretKey =
-      "&client_secret=RE40UE33TGTIIVZEIWIRW3KNHDG3E3UPRLZLE40O1PDDXOIP&v=20180312";
-    const foursquareClientId =
-      "&limit=1&client_id=JVYYDZMWQWFNXS5EAYNSCTUKMA2DWO2ZNJRMFAIQXXT5WX5S";
     let mapZoomStatus = false;
     const options = {
       center: new google.maps.LatLng(mapCentre.latitude, mapCentre.longitude)
     };
     this.map = new google.maps.Map(element, options);
-    this.markerCoordinates.forEach(coord => {
+    this.markerCoordinates.map(coord => {
       const position = new google.maps.LatLng(coord.latitude, coord.longitude);
       const marker = new google.maps.Marker({
         position,
@@ -59,33 +69,38 @@ export default {
         marker.addListener("click", function() {
           let markerLat = this.getPosition().lat();
           let markerLng = this.getPosition().lng();
-          let cityDetails = "";
-          let endPoint = `${foursquareUrl}${markerLat},${markerLng}${foursquareClientId}${foursquareSecretKey}`;
+          getData(markerLat, markerLng);
+          if (!mapZoomStatus) {
+            this.map.setZoom(7);
+            this.map.setCenter(marker.getPosition());
+            mapZoomStatus = true;
+          } else {
+            this.map.setZoom(4);
+            this.map.setCenter(marker.getPosition());
+            mapZoomStatus = false;
+          }
+        });
+        function getData(latitude, longitude) {
+          const foursquareUrl =
+            "https://api.foursquare.com/v2/venues/search?ll=";
+          const foursquareSecretKey =
+            "&client_secret=RE40UE33TGTIIVZEIWIRW3KNHDG3E3UPRLZLE40O1PDDXOIP&v=20180312";
+          const foursquareClientId =
+            "&limit=1&client_id=JVYYDZMWQWFNXS5EAYNSCTUKMA2DWO2ZNJRMFAIQXXT5WX5S";
+          let endPoint = `${foursquareUrl}${latitude},${longitude}${foursquareClientId}${foursquareSecretKey}`;
           axios
             .get(endPoint)
             .then(function(response) {
               console.log(response);
-              // getting data out from local json
               doSomething(response);
             })
             .catch(function(error) {
               console.log(error);
             });
-          // calling data
           function doSomething(data) {
-            console.log(data);
-              $emit("clicked", data);
+            return data;
           }
-          if (!mapZoomStatus) {
-            this.map.setZoom(12);
-            this.map.setCenter(marker.getPosition());
-            mapZoomStatus = true;
-          } else {
-            this.map.setZoom(10);
-            this.map.setCenter(marker.getPosition());
-            mapZoomStatus = false;
-          }
-        });
+        }
       }
     });
   }
@@ -93,9 +108,10 @@ export default {
 </script>
 <style scoped>
 .google-map {
-  width: 60vw;
-  height: 90vh;
+  width: 100vw;
+  height: 100vh;
   margin: 0 auto;
   background: gray;
+  position: relative;
 }
 </style>

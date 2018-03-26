@@ -2,14 +2,15 @@
   <div id="app">
     <Header></Header>
     <div class="wrapper">
-      <SideNav></SideNav>
-      <googleMap name="example" @clicked="onClickChild"></googleMap>
+      <side-nav></side-nav>
+      <google-map name="example" @clicked="onClickChild"></google-map>
     </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import reset from "reset-css";
 import Header from "./components/Header.vue";
 import SideNav from "./components/SideNav";
 import googleMap from "./components/Map";
@@ -20,25 +21,17 @@ export default {
     SideNav,
     googleMap
   },
-  onClickChild: function(value) {
-    console.log(value); // someValue
+  methods: {
+    onClickChild(value) {
+      console.log(value); // someValue
+    }
   }
 };
 </script>
-<style>
+<style lang="scss" scoped>
+// @import "src/assets/main.css";
+
 .wrapper {
   display: flex;
-}
-</style>
-
-
-<style>
-@import url("https://fonts.googleapis.com/css?family=Roboto");
-
-* {
-  margin: 0%;
-  padding: 0%;
-  border: 0px;
-  font-family: "Roboto", sans-serif;
 }
 </style>
