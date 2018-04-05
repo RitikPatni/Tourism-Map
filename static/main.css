@@ -26,7 +26,7 @@
 }
 
 .toggle__button--sidenav {
-  top: 50vh;
+  margin-top: 50vh;
 }
 
 .toggle__button:hover {
@@ -63,4 +63,8 @@
 
 .close:after {
   transform: rotate(-45deg);
+}
+
+.container {
+  margin: 0 25px 0 25px;
 }

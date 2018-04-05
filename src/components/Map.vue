@@ -44,7 +44,9 @@ export default {
       map: null,
       bounds: null,
       markers: [],
-      show: true
+      show: true,
+      currentMarker: null,
+      markerInfo: ""
     };
   },
   mounted: function() {
@@ -64,11 +66,19 @@ export default {
         title: coord.name
       });
       this.markers.push(marker);
+      self = this;
+      console.log(this.currentMarker);
       this.map.fitBounds(this.bounds.extend(position));
       {
         marker.addListener("click", function() {
           let markerLat = this.getPosition().lat();
           let markerLng = this.getPosition().lng();
+          console.log(this);
+          self.currentMarker = {
+            lat: this.getPosition().lat(),
+            lng: this.getPosition().lng()
+          };
+          console.log(self.currentMarker);
           getData(markerLat, markerLng);
           if (!mapZoomStatus) {
             this.map.setZoom(7);
@@ -97,9 +107,6 @@ export default {
             .catch(function(error) {
               console.log(error);
             });
-          function doSomething(data) {
-            return data;
-          }
         }
       }
     });

@@ -3,7 +3,7 @@
     <Header></Header>
     <div class="wrapper">
       <side-nav></side-nav>
-      <google-map name="example" @clicked="onClickChild"></google-map>
+      <google-map name="tourist-map" @clicked="onClickChild"></google-map>
     </div>
   </div>
 </template>

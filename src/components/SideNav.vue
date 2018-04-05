@@ -7,19 +7,21 @@
             <i class="fa fa-paper-plane"></i>
           </button>
         </div>
-        <div class="sidenav__location-picture">
-          <h3 class="sidenav__location-picture__heading">Some Place,Some State</h3>
-          <div class="sidenav__location-picture__img">
-            <img alt="An awesome Picture" class="sidenav__location-picture__img" src="https://c1.hiqcdn.com/customcdn/crop/250x200/photos/co/cover-photo-55467-JPG-images-packages-720x512-1474610240-cropped.JPG"></img>
+        <div class="container">
+          <div class="sidenav__location-picture">
+            <h3 class="sidenav__location-picture__heading">Some Place,Some State</h3>
+            <div class="sidenav__location-picture__img">
+              <img alt="An awesome Picture" class="sidenav__location-picture__img" src="https://c1.hiqcdn.com/customcdn/crop/250x200/photos/co/cover-photo-55467-JPG-images-packages-720x512-1474610240-cropped.JPG"></img>
+            </div>
           </div>
-        </div>
-        <div class="sidenav__weather ">
-          <h3 class="sidenav__weather__heading">Weather</h3>
-          <div class="sidenav__weather__widget">
-            <div class="sidenav__weather__widget__box sidenav__weather__widget__box--sunrise"></div>
-            <div class="sidenav__weather__widget__box sidenav__weather__widget__box--sunset"></div>
-            <div class="sidenav__weather__widget__box sidenav__weather__widget__box--wind"></div>
-            <div class="sidenav__weather__widget__box sidenav__weather__widget__box--humidity"></div>
+          <div class="sidenav__weather ">
+            <h3 class="sidenav__weather__heading">Weather</h3>
+            <div class="sidenav__weather__widget">
+              <div class="sidenav__weather__widget__box sidenav__weather__widget__box--sunrise"></div>
+              <div class="sidenav__weather__widget__box sidenav__weather__widget__box--sunset"></div>
+              <div class="sidenav__weather__widget__box sidenav__weather__widget__box--wind"></div>
+              <div class="sidenav__weather__widget__box sidenav__weather__widget__box--humidity"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -34,7 +36,6 @@
   width: 300px;
   height: 100vh;
   z-index: 2;
-  margin: 0 25px 0 25px;
 }
 .sidenav__navigate {
   background: darkslategray;
