@@ -48,6 +48,7 @@ export default {
       currentMarker: null,
       markerInfo: ""
     };
+    this.$emit("markerData", currentMarker);
   },
   mounted: function() {
     this.bounds = new google.maps.LatLngBounds();
@@ -78,7 +79,6 @@ export default {
             lat: this.getPosition().lat(),
             lng: this.getPosition().lng()
           };
-          console.log(self.currentMarker);
           getData(markerLat, markerLng);
           if (!mapZoomStatus) {
             this.map.setZoom(7);
@@ -98,11 +98,12 @@ export default {
           const foursquareClientId =
             "&limit=1&client_id=JVYYDZMWQWFNXS5EAYNSCTUKMA2DWO2ZNJRMFAIQXXT5WX5S";
           let endPoint = `${foursquareUrl}${latitude},${longitude}${foursquareClientId}${foursquareSecretKey}`;
+          console.log(endPoint);
           axios
             .get(endPoint)
             .then(function(response) {
-              console.log(response);
-              doSomething(response);
+              console.log(...response);
+              self.$emit("interface", response);
             })
             .catch(function(error) {
               console.log(error);

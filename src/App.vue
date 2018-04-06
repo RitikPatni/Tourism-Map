@@ -3,7 +3,7 @@
     <Header></Header>
     <div class="wrapper">
       <side-nav></side-nav>
-      <google-map name="tourist-map" @clicked="onClickChild"></google-map>
+      <google-map name="tourist-map" @interface="handleFcAfterDateBack"></google-map>
     </div>
   </div>
 </template>
@@ -24,6 +24,9 @@ export default {
   methods: {
     onClickChild(value) {
       console.log(value); // someValue
+    },
+    handleFcAfterDateBack(event) {
+      console.log("data after child handle: ", event);
     }
   }
 };
