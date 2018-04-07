@@ -68,13 +68,17 @@ export default {
       });
       this.markers.push(marker);
       self = this;
-      console.log(this.currentMarker);
       this.map.fitBounds(this.bounds.extend(position));
       {
         marker.addListener("click", function() {
           let markerLat = this.getPosition().lat();
           let markerLng = this.getPosition().lng();
+          let markerInfo = {
+            lat: this.getPosition().lat(),
+            lng: this.getPosition().lng()
+          };
           console.log(this);
+          self.$emit("locdata", markerInfo);
           self.currentMarker = {
             lat: this.getPosition().lat(),
             lng: this.getPosition().lng()

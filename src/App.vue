@@ -2,8 +2,8 @@
   <div id="app">
     <Header></Header>
     <div class="wrapper">
-      <side-nav :show="show" :mapInfo="info"></side-nav>
-      <google-map name="tourist-map" @interface="handleFcAfterDateBack"></google-map>
+      <side-nav :show="show" :mapInfo="info" :latlon="latlon"></side-nav>
+      <google-map name="tourist-map" @interface="handleFcAfterDateBack" @locdata="showLocInfo"></google-map>
     </div>
   </div>
 </template>
@@ -24,7 +24,8 @@ export default {
   data: function() {
     return {
       show: false,
-      info: null
+      info: null,
+      latlon: null
     };
   },
   methods: {
@@ -33,8 +34,13 @@ export default {
     },
     handleFcAfterDateBack(event) {
       console.log("data after child handle: ", event);
-      this.show = true;
+      if (!this.show) this.show = true;
+      else this.show = false;
       this.info = event;
+    },
+    showLocInfo(latlon) {
+      console.log(latlon);
+      this.latlon = latlon;
     }
   }
 };
