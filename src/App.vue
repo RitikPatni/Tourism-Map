@@ -2,7 +2,7 @@
   <div id="app">
     <Header></Header>
     <div class="wrapper">
-      <side-nav></side-nav>
+      <side-nav :show="show" :mapInfo="info"></side-nav>
       <google-map name="tourist-map" @interface="handleFcAfterDateBack"></google-map>
     </div>
   </div>
@@ -21,12 +21,20 @@ export default {
     SideNav,
     googleMap
   },
+  data: function() {
+    return {
+      show: false,
+      info: null
+    };
+  },
   methods: {
     onClickChild(value) {
       console.log(value); // someValue
     },
     handleFcAfterDateBack(event) {
       console.log("data after child handle: ", event);
+      this.show = true;
+      this.info = event;
     }
   }
 };

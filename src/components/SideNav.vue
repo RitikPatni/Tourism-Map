@@ -26,7 +26,7 @@
         </div>
       </div>
     </transition>
-    <button @click="show=!show" class="toggle__button toggle__button--sidenav ">
+    <button class="toggle__button toggle__button--sidenav ">
       Toggle render
     </button>
   </div>
@@ -97,7 +97,13 @@
 export default {
   name: "side-nav",
   props: {
-    show: true
+    show: {
+      type: Boolean,
+      required: true
+    },
+    mapInfo: {
+      required: true
+    }
   }
 };
 </script>
