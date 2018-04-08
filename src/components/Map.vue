@@ -6,6 +6,7 @@ import axios from "axios";
 export default {
   name: "google-map",
   props: ["name"],
+
   data: function() {
     return {
       mapName: this.name + "-map",
@@ -48,7 +49,6 @@ export default {
       currentMarker: null,
       markerInfo: ""
     };
-    this.$emit("markerData", currentMarker);
   },
   mounted: function() {
     this.bounds = new google.maps.LatLngBounds();
@@ -71,19 +71,12 @@ export default {
       this.map.fitBounds(this.bounds.extend(position));
       {
         marker.addListener("click", function() {
-          let markerLat = this.getPosition().lat();
-          let markerLng = this.getPosition().lng();
           let markerInfo = {
             lat: this.getPosition().lat(),
             lng: this.getPosition().lng()
           };
           console.log(this);
           self.$emit("locdata", markerInfo);
-          self.currentMarker = {
-            lat: this.getPosition().lat(),
-            lng: this.getPosition().lng()
-          };
-          getData(markerLat, markerLng);
           if (!mapZoomStatus) {
             this.map.setZoom(7);
             this.map.setCenter(marker.getPosition());
@@ -94,25 +87,6 @@ export default {
             mapZoomStatus = false;
           }
         });
-        function getData(latitude, longitude) {
-          const foursquareUrl =
-            "https://api.foursquare.com/v2/venues/search?ll=";
-          const foursquareSecretKey =
-            "&client_secret=RE40UE33TGTIIVZEIWIRW3KNHDG3E3UPRLZLE40O1PDDXOIP&v=20180312";
-          const foursquareClientId =
-            "&limit=1&client_id=JVYYDZMWQWFNXS5EAYNSCTUKMA2DWO2ZNJRMFAIQXXT5WX5S";
-          let endPoint = `${foursquareUrl}${latitude},${longitude}${foursquareClientId}${foursquareSecretKey}`;
-          console.log(endPoint);
-          axios
-            .get(endPoint)
-            .then(function(response) {
-              console.log(...response);
-              self.$emit("interface", response);
-            })
-            .catch(function(error) {
-              console.log(error);
-            });
-        }
       }
     });
   }

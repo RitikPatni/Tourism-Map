@@ -3,7 +3,7 @@
     <Header></Header>
     <div class="wrapper">
       <side-nav :show="show" :mapInfo="info" :latlon="latlon"></side-nav>
-      <google-map name="tourist-map" @interface="handleFcAfterDateBack" @locdata="showLocInfo"></google-map>
+      <google-map name="tourist-map" @locdata="showLocInfo"></google-map>
     </div>
   </div>
 </template>
@@ -32,15 +32,28 @@ export default {
     onClickChild(value) {
       console.log(value); // someValue
     },
-    handleFcAfterDateBack(event) {
-      console.log("data after child handle: ", event);
+    showLocInfo(latlon) {
       if (!this.show) this.show = true;
       else this.show = false;
-      this.info = event;
-    },
-    showLocInfo(latlon) {
       console.log(latlon);
       this.latlon = latlon;
+      const foursquareUrl = "https://api.foursquare.com/v2/venues/search?ll=";
+      const foursquareSecretKey =
+        "&client_secret=RE40UE33TGTIIVZEIWIRW3KNHDG3E3UPRLZLE40O1PDDXOIP&v=20180312";
+      const foursquareClientId =
+        "&limit=1&client_id=JVYYDZMWQWFNXS5EAYNSCTUKMA2DWO2ZNJRMFAIQXXT5WX5S";
+      let endPoint = `${foursquareUrl}${latlon.lat},${
+        latlon.lng
+      }${foursquareClientId}${foursquareSecretKey}`;
+      console.log(endPoint);
+      axios
+        .get(endPoint)
+        .then(response => {
+          this.info = response.data.response.venues;
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
     }
   }
 };

@@ -3,8 +3,8 @@
     <transition name="slide-fade">
       <div v-if="show" class="sidenav">
         <navigate></navigate>
-        <div @click="showLocInfo()" class="container">
-          <locPic></locPic>
+        <div class="container">
+          <locPic :locName="mapInfo"></locPic>
           <weather></weather>
         </div>
       </div>
@@ -63,17 +63,17 @@ export default {
     return {
       mapLocInfo: null
     };
-  },
-  methods: {
-    showLocInfo() {
-      console.log("NORMAL(ONCLICK)", this.latlon);
-    }
-  },
-  async created() {
-    console.log("ASYNC", this.latlon);
-  },
-  mounted: function() {
-    console.log("MOUNTED", this.latlon);
   }
+  // methods: {
+  //   showLocInfo() {
+  //     console.log("NORMAL(ONCLICK)", this.latlon);
+  //   }
+  // },
+  // async created() {
+  //   console.log("ASYNC", this.latlon);
+  // },
+  // mounted: function() {
+  //   console.log("MOUNTED", this.latlon);
+  // }
 };
 </script>
