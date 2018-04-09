@@ -10,38 +10,7 @@ export default {
   data: function() {
     return {
       mapName: this.name + "-map",
-      markerCoordinates: [
-        // {
-        //   latitude: 20.5937,
-        //   longitude: 78.9629,
-        //   name: "Centre Of India"
-        // },
-        // {
-        //   latitude: 34.083656,
-        //   longitude: 74.797371,
-        //   name: "Srinagar"
-        // },
-        // {
-        //   latitude: 8.0883,
-        //   longitude: 77.5385,
-        //   name: "KanyaKumari"
-        // },
-        // {
-        //   latitude: 26.9372,
-        //   longitude: 75.8152,
-        //   name: "NaharGarh"
-        // },
-        // {
-        //   latitude: 26.9851,
-        //   longitude: 75.8456,
-        //   name: "JaiGarh"
-        // },
-        // {
-        //   latitude: 26.9258,
-        //   longitude: 75.8237,
-        //   name: "CityPalace"
-        // }
-      ],
+      markerCoordinates: [],
       map: null,
       bounds: null,
       markers: [],

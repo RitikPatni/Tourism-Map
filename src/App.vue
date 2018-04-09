@@ -66,14 +66,6 @@ export default {
             .catch(error => console.log(error));
         })
         .catch(error => console.log(error));
-      // axios
-      //   .get(photoEndPoint)
-      //   .then(photoData => {
-      //     this.photoInfo = photoData;
-      //   })
-      //   .catch(function(error) {
-      //     console.log(error);
-      //   });
     }
   }
 };
