@@ -64,16 +64,5 @@ export default {
       mapLocInfo: null
     };
   }
-  // methods: {
-  //   showLocInfo() {
-  //     console.log("NORMAL(ONCLICK)", this.latlon);
-  //   }
-  // },
-  // async created() {
-  //   console.log("ASYNC", this.latlon);
-  // },
-  // mounted: function() {
-  //   console.log("MOUNTED", this.latlon);
-  // }
 };
 </script>

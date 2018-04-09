@@ -11,36 +11,36 @@ export default {
     return {
       mapName: this.name + "-map",
       markerCoordinates: [
-        {
-          latitude: 20.5937,
-          longitude: 78.9629,
-          name: "Centre Of India"
-        },
-        {
-          latitude: 34.083656,
-          longitude: 74.797371,
-          name: "Srinagar"
-        },
-        {
-          latitude: 8.0883,
-          longitude: 77.5385,
-          name: "KanyaKumari"
-        },
-        {
-          latitude: 26.9372,
-          longitude: 75.8152,
-          name: "NaharGarh"
-        },
-        {
-          latitude: 26.9851,
-          longitude: 75.8456,
-          name: "JaiGarh"
-        },
-        {
-          latitude: 26.9258,
-          longitude: 75.8237,
-          name: "CityPalace"
-        }
+        // {
+        //   latitude: 20.5937,
+        //   longitude: 78.9629,
+        //   name: "Centre Of India"
+        // },
+        // {
+        //   latitude: 34.083656,
+        //   longitude: 74.797371,
+        //   name: "Srinagar"
+        // },
+        // {
+        //   latitude: 8.0883,
+        //   longitude: 77.5385,
+        //   name: "KanyaKumari"
+        // },
+        // {
+        //   latitude: 26.9372,
+        //   longitude: 75.8152,
+        //   name: "NaharGarh"
+        // },
+        // {
+        //   latitude: 26.9851,
+        //   longitude: 75.8456,
+        //   name: "JaiGarh"
+        // },
+        // {
+        //   latitude: 26.9258,
+        //   longitude: 75.8237,
+        //   name: "CityPalace"
+        // }
       ],
       map: null,
       bounds: null,
@@ -51,44 +51,97 @@ export default {
     };
   },
   mounted: function() {
-    this.bounds = new google.maps.LatLngBounds();
-    const element = document.getElementById(this.mapName);
-    const mapCentre = this.markerCoordinates[0];
-    let mapZoomStatus = false;
-    const options = {
-      center: new google.maps.LatLng(mapCentre.latitude, mapCentre.longitude)
-    };
-    this.map = new google.maps.Map(element, options);
-    this.markerCoordinates.map(coord => {
-      const position = new google.maps.LatLng(coord.latitude, coord.longitude);
-      const marker = new google.maps.Marker({
-        position,
-        map: this.map,
-        title: coord.name
-      });
-      this.markers.push(marker);
-      self = this;
-      this.map.fitBounds(this.bounds.extend(position));
-      {
-        marker.addListener("click", function() {
-          let markerInfo = {
-            lat: this.getPosition().lat(),
-            lng: this.getPosition().lng()
-          };
-          console.log(this);
-          self.$emit("locdata", markerInfo);
-          if (!mapZoomStatus) {
-            this.map.setZoom(7);
-            this.map.setCenter(marker.getPosition());
-            mapZoomStatus = true;
-          } else {
-            this.map.setZoom(4);
-            this.map.setCenter(marker.getPosition());
-            mapZoomStatus = false;
+    axios
+      .get(
+        "https://gist.githubusercontent.com/RitikPatni/366a1fff43e0d92f81688ee7a83dbf47/raw/fab839cf2de9ee4ea05009d537214ebe0b9ee68a/tourist-places.json"
+      )
+      .then(retrievedData => {
+        this.markerCoordinates = retrievedData.data;
+        this.bounds = new google.maps.LatLngBounds();
+        const element = document.getElementById(this.mapName);
+        const mapCentre = this.markerCoordinates[0];
+        let mapZoomStatus = false;
+        const options = {
+          center: new google.maps.LatLng(
+            mapCentre.latitude,
+            mapCentre.longitude
+          )
+        };
+        this.map = new google.maps.Map(element, options);
+        this.markerCoordinates.map(coord => {
+          const position = new google.maps.LatLng(
+            coord.latitude,
+            coord.longitude
+          );
+          const marker = new google.maps.Marker({
+            position,
+            map: this.map,
+            title: coord.name
+          });
+          this.markers.push(marker);
+          self = this;
+          this.map.fitBounds(this.bounds.extend(position));
+          {
+            marker.addListener("click", function() {
+              let markerInfo = {
+                lat: this.getPosition().lat(),
+                lng: this.getPosition().lng()
+              };
+              console.log(this);
+              self.$emit("locdata", markerInfo);
+              if (!mapZoomStatus) {
+                this.map.setZoom(7);
+                this.map.setCenter(marker.getPosition());
+                mapZoomStatus = true;
+              } else {
+                this.map.setZoom(4);
+                this.map.setCenter(marker.getPosition());
+                mapZoomStatus = false;
+              }
+            });
           }
         });
-      }
-    });
+      })
+      .catch(error => console.log(error));
+
+    // this.bounds = new google.maps.LatLngBounds();
+    // const element = document.getElementById(this.mapName);
+    // const mapCentre = this.markerCoordinates[0];
+    // let mapZoomStatus = false;
+    // const options = {
+    //   center: new google.maps.LatLng(mapCentre.latitude, mapCentre.longitude)
+    // };
+    // this.map = new google.maps.Map(element, options);
+    // this.markerCoordinates.map(coord => {
+    //   const position = new google.maps.LatLng(coord.latitude, coord.longitude);
+    //   const marker = new google.maps.Marker({
+    //     position,
+    //     map: this.map,
+    //     title: coord.name
+    //   });
+    //   this.markers.push(marker);
+    //   self = this;
+    //   this.map.fitBounds(this.bounds.extend(position));
+    //   {
+    //     marker.addListener("click", function() {
+    //       let markerInfo = {
+    //         lat: this.getPosition().lat(),
+    //         lng: this.getPosition().lng()
+    //       };
+    //       console.log(this);
+    //       self.$emit("locdata", markerInfo);
+    //       if (!mapZoomStatus) {
+    //         this.map.setZoom(7);
+    //         this.map.setCenter(marker.getPosition());
+    //         mapZoomStatus = true;
+    //       } else {
+    //         this.map.setZoom(4);
+    //         this.map.setCenter(marker.getPosition());
+    //         mapZoomStatus = false;
+    //       }
+    //     });
+    //   }
+    // });
   }
 };
 </script>
