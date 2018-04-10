@@ -30,9 +30,6 @@ export default {
     };
   },
   methods: {
-    onClickChild(value) {
-      console.log(value); // someValue
-    },
     showLocInfo(latlon) {
       if (!this.show) this.show = true;
       else this.show = false;
@@ -51,9 +48,6 @@ export default {
       let endPoint = `${foursquareUrl}${latlon.lat},${
         latlon.lng
       }${foursquareClientId}${foursquareSecretKey}`;
-      // let photoEndPoint = `${foursquarePhotoUrl}${this.info[0].id}/photos`;
-      // console.log(photoEndPoint);
-      console.log(endPoint);
       axios
         .get(endPoint)
         .then(response => {
@@ -79,8 +73,6 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-// @import "src/assets/main.css";
-
 .wrapper {
   display: flex;
 }
