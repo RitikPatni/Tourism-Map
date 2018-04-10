@@ -4,7 +4,7 @@
       <div v-if="show" class="sidenav">
         <navigate></navigate>
         <div class="container">
-          <locPic :locName="mapInfo"></locPic>
+          <locPic :locName="mapInfo" :photoInfo="photoInfo"></locPic>
           <weather></weather>
         </div>
       </div>
@@ -56,6 +56,9 @@ export default {
       required: true
     },
     latlon: {
+      required: true
+    },
+    photoInfo: {
       required: true
     }
   },

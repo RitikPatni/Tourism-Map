@@ -2,7 +2,7 @@
   <div id="app">
     <Header></Header>
     <div class="wrapper">
-      <side-nav :show="show" :mapInfo="info" :latlon="latlon"></side-nav>
+      <side-nav :show="show" :mapInfo="info" :latlon="latlon" :photoInfo="photoInfo"></side-nav>
       <google-map name="tourist-map" @locdata="showLocInfo"></google-map>
     </div>
   </div>
@@ -44,6 +44,10 @@ export default {
         "&client_secret=RE40UE33TGTIIVZEIWIRW3KNHDG3E3UPRLZLE40O1PDDXOIP&v=20180312";
       const foursquareClientId =
         "&limit=1&client_id=JVYYDZMWQWFNXS5EAYNSCTUKMA2DWO2ZNJRMFAIQXXT5WX5S";
+      const foursquarePhotoClientId =
+        "&client_id=JVYYDZMWQWFNXS5EAYNSCTUKMA2DWO2ZNJRMFAIQXXT5WX5S";
+      const foursquarePhotoSecretKey =
+        "&client_secret=RE40UE33TGTIIVZEIWIRW3KNHDG3E3UPRLZLE40O1PDDXOIP&group=venue&v=20180312";
       let endPoint = `${foursquareUrl}${latlon.lat},${
         latlon.lng
       }${foursquareClientId}${foursquareSecretKey}`;
@@ -56,12 +60,16 @@ export default {
           this.info = response.data.response.venues;
           let photoEndPoint = `${foursquarePhotoUrl}${
             this.info[0].id
-          }/photos${foursquareClientId}${foursquareSecretKey}`;
+          }/photos?${foursquarePhotoClientId}${foursquarePhotoSecretKey}`;
           console.log(photoEndPoint);
           axios
             .get(photoEndPoint)
             .then(photoResponse => {
-              this.photoInfo = photoResponse;
+              console.log(photoResponse.data.response);
+              let photoUrl = `${
+                photoResponse.data.response.photos.items[0].prefix
+              }300x200${photoResponse.data.response.photos.items[0].suffix}`;
+              this.photoInfo = photoUrl;
             })
             .catch(error => console.log(error));
         })

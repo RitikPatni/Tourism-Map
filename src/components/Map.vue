@@ -72,45 +72,6 @@ export default {
         });
       })
       .catch(error => console.log(error));
-
-    // this.bounds = new google.maps.LatLngBounds();
-    // const element = document.getElementById(this.mapName);
-    // const mapCentre = this.markerCoordinates[0];
-    // let mapZoomStatus = false;
-    // const options = {
-    //   center: new google.maps.LatLng(mapCentre.latitude, mapCentre.longitude)
-    // };
-    // this.map = new google.maps.Map(element, options);
-    // this.markerCoordinates.map(coord => {
-    //   const position = new google.maps.LatLng(coord.latitude, coord.longitude);
-    //   const marker = new google.maps.Marker({
-    //     position,
-    //     map: this.map,
-    //     title: coord.name
-    //   });
-    //   this.markers.push(marker);
-    //   self = this;
-    //   this.map.fitBounds(this.bounds.extend(position));
-    //   {
-    //     marker.addListener("click", function() {
-    //       let markerInfo = {
-    //         lat: this.getPosition().lat(),
-    //         lng: this.getPosition().lng()
-    //       };
-    //       console.log(this);
-    //       self.$emit("locdata", markerInfo);
-    //       if (!mapZoomStatus) {
-    //         this.map.setZoom(7);
-    //         this.map.setCenter(marker.getPosition());
-    //         mapZoomStatus = true;
-    //       } else {
-    //         this.map.setZoom(4);
-    //         this.map.setCenter(marker.getPosition());
-    //         mapZoomStatus = false;
-    //       }
-    //     });
-    //   }
-    // });
   }
 };
 </script>
