@@ -2,7 +2,7 @@
   <div id="app">
     <Header></Header>
     <div class="wrapper">
-      <side-nav :show="show" :mapInfo="info" :latlon="latlon" :photoInfo="photoInfo"></side-nav>
+      <side-nav :show="show" :mapInfo="info" :latlon="latlon" :photoInfo="photoInfo" @getNaviPath="getNaviPath"></side-nav>
       <google-map name="tourist-map" @locdata="showLocInfo" @openSideBar="openSideBar" @closeSideBar="closeSideBar"></google-map>
     </div>
   </div>
@@ -32,9 +32,34 @@ export default {
   methods: {
     openSideBar() {
       this.show = true;
+      axios
+        .get(
+          "https://maps.googleapis.com/maps/api/directions/json?origin=26,75&destination=30,80&key=AIzaSyBlQcHnS3aeoQhRcZV1S6tSuv79drbh--w"
+        )
+        .then(retrievedData => {
+          console.log(retrievedData);
+        });
     },
     closeSideBar() {
       this.show = false;
+    },
+    getNaviPath() {
+      let curLoc = {
+        lat: null,
+        lng: null
+      };
+      navigator.geolocation.getCurrentPosition(function(position) {
+        curLoc = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+      });
+      alert("HEEEEEEEEEEEEEEEEEEEEYYYYYYYYYYYYYYY");
+      dirAPIURL = `https://maps.googleapis.com/maps/api/directions/json?origin=${
+        curLoc.lat
+      },${curLoc.lng}&destination=${destination.lat},${
+        destination.lng
+      }&key=AIzaSyBlQcHnS3aeoQhRcZV1S6tSuv79drbh--w`;
     },
     showLocInfo(latlon) {
       this.latlon = latlon;

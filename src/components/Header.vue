@@ -2,10 +2,10 @@
   <div class="header-component">
     <transition name="slide-top">
       <div v-if="show" class="header">
-        <a @click="show=!show" href="#" class="close"></a>
+        <a href="#" class="close"></a>
       </div>
     </transition>
-    <button @click="show=!show" class=" toggle__button toggle__button--header ">
+    <button class=" toggle__button toggle__button--header ">
       Help
     </button>
   </div>

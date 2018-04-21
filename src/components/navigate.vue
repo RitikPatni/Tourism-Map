@@ -1,6 +1,6 @@
 <template>
   <div class="sidenav__navigate">
-    <button class="btn sidenav__navigate__button">Navigate
+    <button class="btn sidenav__navigate__button" @click="callMe">Navigate
       <i class="fa fa-paper-plane"></i>
     </button>
   </div>
@@ -19,7 +19,12 @@
 </style>
 <script>
 export default {
-  name: "navigate"
+  name: "navigate",
+  methods: {
+    callMe() {
+      this.$emit("getNaviPath");
+    }
+  }
 };
 </script>
 
