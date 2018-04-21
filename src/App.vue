@@ -3,7 +3,7 @@
     <Header></Header>
     <div class="wrapper">
       <side-nav :show="show" :mapInfo="info" :latlon="latlon" :photoInfo="photoInfo"></side-nav>
-      <google-map name="tourist-map" @locdata="showLocInfo"></google-map>
+      <google-map name="tourist-map" @locdata="showLocInfo" @openSideBar="openSideBar" @closeSideBar="closeSideBar"></google-map>
     </div>
   </div>
 </template>
@@ -30,10 +30,13 @@ export default {
     };
   },
   methods: {
+    openSideBar() {
+      this.show = true;
+    },
+    closeSideBar() {
+      this.show = false;
+    },
     showLocInfo(latlon) {
-      if (!this.show) this.show = true;
-      else this.show = false;
-      console.log(latlon);
       this.latlon = latlon;
       const foursquareUrl = "https://api.foursquare.com/v2/venues/search?ll=";
       const foursquarePhotoUrl = "https://api.foursquare.com/v2/venues/";
@@ -62,7 +65,7 @@ export default {
               console.log(photoResponse.data.response);
               let photoUrl = `${
                 photoResponse.data.response.photos.items[0].prefix
-              }300x200${photoResponse.data.response.photos.items[0].suffix}`;
+              }250x200${photoResponse.data.response.photos.items[0].suffix}`;
               this.photoInfo = photoUrl;
             })
             .catch(error => console.log(error));

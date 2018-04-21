@@ -49,6 +49,10 @@ export default {
           });
           this.markers.push(marker);
           self = this;
+          let markerPrevLoc = {
+            lat: null,
+            lng: null
+          };
           this.map.fitBounds(this.bounds.extend(position));
           {
             marker.addListener("click", function() {
@@ -56,17 +60,29 @@ export default {
                 lat: this.getPosition().lat(),
                 lng: this.getPosition().lng()
               };
-              console.log(this);
-              self.$emit("locdata", markerInfo);
-              if (!mapZoomStatus) {
+              console.log(this.map.getCenter().lat());
+              // self.$emit("locdata", markerInfo);
+              if (markerInfo.lat == markerPrevLoc.lat) {
+                if (!mapZoomStatus) {
+                  this.map.setZoom(7);
+                  this.map.setCenter(marker.getPosition());
+                  mapZoomStatus = true;
+                  self.$emit("openSideBar");
+                } else {
+                  this.map.setZoom(4);
+                  this.map.setCenter(marker.getPosition());
+                  mapZoomStatus = false;
+                  self.$emit("closeSideBar");
+                }
+              } else {
+                console.log(markerPrevLoc);
+                self.$emit("openSideBar");
+                self.$emit("locdata", markerInfo);
                 this.map.setZoom(7);
                 this.map.setCenter(marker.getPosition());
-                mapZoomStatus = true;
-              } else {
-                this.map.setZoom(4);
-                this.map.setCenter(marker.getPosition());
-                mapZoomStatus = false;
               }
+              markerPrevLoc.lat = marker.getPosition().lat();
+              markerPrevLoc.lng = marker.getPosition().lng();
             });
           }
         });
