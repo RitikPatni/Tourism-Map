@@ -2,10 +2,9 @@
   <div>
     <transition name="slide-fade">
       <div v-if="show" class="sidenav">
-        <navigate></navigate>
         <div class="container">
           <locPic :locName="mapInfo" :photoInfo="photoInfo"></locPic>
-          <weather></weather>
+          <weather :weatherInfo="weatherInfo"></weather>
         </div>
       </div>
     </transition>
@@ -39,13 +38,11 @@
 <script>
 import weather from "./weather";
 import locPic from "./picture";
-import navigate from "./navigate";
 export default {
   name: "side-nav",
   components: {
     weather,
-    locPic,
-    navigate
+    locPic
   },
   props: {
     show: {
@@ -59,6 +56,9 @@ export default {
       required: true
     },
     photoInfo: {
+      required: true
+    },
+    weatherInfo: {
       required: true
     }
   },

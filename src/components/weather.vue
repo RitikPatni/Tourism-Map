@@ -2,8 +2,8 @@
   <div class="sidenav__weather ">
     <h3 class="sidenav__weather__heading">Weather</h3>
     <div class="sidenav__weather__widget">
-      <div class="sidenav__weather__widget__box sidenav__weather__widget__box--sunrise"></div>
-      <div class="sidenav__weather__widget__box sidenav__weather__widget__box--sunset"></div>
+      <div class="sidenav__weather__widget__box sidenav__weather__widget__box--sunrise">{{`${this.weatherInfo.coord.lat}`}}</div>
+      <div class="sidenav__weather__widget__box sidenav__weather__widget__box--sunset">{{`${this.weatherInfo.coord.lon}`}}</div>
       <div class="sidenav__weather__widget__box sidenav__weather__widget__box--wind"></div>
       <div class="sidenav__weather__widget__box sidenav__weather__widget__box--humidity"></div>
     </div>
@@ -11,7 +11,7 @@
 </template>
 <style>
 .sidenav__weather__widget {
-  height: 20vh;
+  max-height: 20vh;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -19,17 +19,22 @@
   padding-top: 15px;
 }
 .sidenav__weather__widget__box {
-  width: 125px;
+  width: 44%;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   height: 40px;
   background: #fff;
-  margin-left: 5px;
+  margin: 0.5% 1%;
 }
 </style>
 
 <script>
 export default {
-  name: "weather"
+  name: "weather",
+  props: {
+    weatherInfo: {
+      required: true
+    }
+  }
 };
 </script>

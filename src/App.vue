@@ -2,7 +2,7 @@
   <div id="app">
     <Header></Header>
     <div class="wrapper">
-      <side-nav :show="show" :mapInfo="info" :latlon="latlon" :photoInfo="photoInfo" @getNaviPath="getNaviPath"></side-nav>
+      <side-nav :show="show" :mapInfo="info" :latlon="latlon" :photoInfo="photoInfo" :weatherInfo="weatherInfo"></side-nav>
       <google-map name="tourist-map" @locdata="showLocInfo" @openSideBar="openSideBar" @closeSideBar="closeSideBar"></google-map>
     </div>
   </div>
@@ -26,7 +26,8 @@ export default {
       show: false,
       info: null,
       latlon: null,
-      photoInfo: null
+      photoInfo: null,
+      weatherInfo: null
     };
   },
   methods: {
@@ -43,26 +44,11 @@ export default {
     closeSideBar() {
       this.show = false;
     },
-    getNaviPath() {
-      let curLoc = {
-        lat: null,
-        lng: null
-      };
-      navigator.geolocation.getCurrentPosition(function(position) {
-        curLoc = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        };
-      });
-      alert("HEEEEEEEEEEEEEEEEEEEEYYYYYYYYYYYYYYY");
-      dirAPIURL = `https://maps.googleapis.com/maps/api/directions/json?origin=${
-        curLoc.lat
-      },${curLoc.lng}&destination=${destination.lat},${
-        destination.lng
-      }&key=AIzaSyBlQcHnS3aeoQhRcZV1S6tSuv79drbh--w`;
-    },
     showLocInfo(latlon) {
       this.latlon = latlon;
+      const weatherAPIURL = `http://api.openweathermap.org/data/2.5/weather?lat=${
+        latlon.lat
+      }&lon=${latlon.lng}&appid=2a7dd97fbb1c1d9c7a8497f270032341`;
       const foursquareUrl = "https://api.foursquare.com/v2/venues/search?ll=";
       const foursquarePhotoUrl = "https://api.foursquare.com/v2/venues/";
       const foursquareSecretKey =
@@ -76,6 +62,12 @@ export default {
       let endPoint = `${foursquareUrl}${latlon.lat},${
         latlon.lng
       }${foursquareClientId}${foursquareSecretKey}`;
+      axios
+        .get(weatherAPIURL)
+        .then(response => {
+          this.weatherInfo = response.data;
+        })
+        .catch(error => console.log(error));
       axios
         .get(endPoint)
         .then(response => {

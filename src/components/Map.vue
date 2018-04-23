@@ -61,7 +61,6 @@ export default {
                 lng: this.getPosition().lng()
               };
               console.log(this.map.getCenter().lat());
-              // self.$emit("locdata", markerInfo);
               if (markerInfo.lat == markerPrevLoc.lat) {
                 if (!mapZoomStatus) {
                   this.map.setZoom(7);
@@ -78,6 +77,7 @@ export default {
                 console.log(markerPrevLoc);
                 self.$emit("openSideBar");
                 self.$emit("locdata", markerInfo);
+                // self.$emit("getWeatherData");
                 this.map.setZoom(7);
                 this.map.setCenter(marker.getPosition());
               }
