@@ -79,11 +79,13 @@ export default {
           axios
             .get(photoEndPoint)
             .then(photoResponse => {
-              console.log(photoResponse.data.response);
-              let photoUrl = `${
-                photoResponse.data.response.photos.items[0].prefix
-              }250x200${photoResponse.data.response.photos.items[0].suffix}`;
-              this.photoInfo = photoUrl;
+              console.log(photoResponse);
+              if (photoResponse.data.response.photos.count != 0) {
+                let photoUrl = `${
+                  photoResponse.data.response.photos.items[0].prefix
+                }250x200${photoResponse.data.response.photos.items[0].suffix}`;
+                this.photoInfo = photoUrl;
+              } else this.photoInfo = "http://via.placeholder.com/200x150";
             })
             .catch(error => console.log(error));
         })
