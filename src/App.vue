@@ -2,7 +2,7 @@
   <div id="app">
     <Header></Header>
     <div class="wrapper">
-      <side-nav :show="show" :mapInfo="info" :latlon="latlon" :photoInfo="photoInfo" :weatherInfo="weatherInfo"></side-nav>
+      <side-nav :show="show" :mapInfo="info" :latlon="latlon" :photoInfo="photoInfo" :weatherInfo="weatherInfo" :sun="sun"></side-nav>
       <google-map name="tourist-map" @locdata="showLocInfo" @openSideBar="openSideBar" @closeSideBar="closeSideBar"></google-map>
     </div>
   </div>
@@ -27,7 +27,8 @@ export default {
       info: null,
       latlon: null,
       photoInfo: null,
-      weatherInfo: null
+      weatherInfo: null,
+      sun: { set: null, rise: null }
     };
   },
   methods: {
@@ -66,6 +67,21 @@ export default {
         .get(weatherAPIURL)
         .then(response => {
           this.weatherInfo = response.data;
+          self = this;
+          convertTime(
+            this.weatherInfo.sys.sunrise,
+            this.weatherInfo.sys.sunset
+          );
+          function convertTime(sunrise, sunset) {
+            let rise = new Date(sunrise * 1000);
+            let set = new Date(sunset * 1000);
+            let riseHours = rise.getHours();
+            let setHours = set.getHours();
+            let riseMin = "0" + rise.getMinutes();
+            let setMin = "0" + set.getMinutes();
+            self.sun.rise = `${riseHours}:${riseMin.substr(-2)}`;
+            self.sun.set = `${setHours}:${setMin.substr(-2)}`;
+          }
         })
         .catch(error => console.log(error));
       axios
@@ -85,7 +101,7 @@ export default {
                   photoResponse.data.response.photos.items[0].prefix
                 }250x200${photoResponse.data.response.photos.items[0].suffix}`;
                 this.photoInfo = photoUrl;
-              } else this.photoInfo = "http://via.placeholder.com/200x150";
+              } else this.photoInfo = "http://via.placeholder.com/250x200";
             })
             .catch(error => console.log(error));
         })

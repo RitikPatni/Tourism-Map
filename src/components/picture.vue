@@ -7,14 +7,27 @@
     </div>
   </div>
 </template>
-<style>
+<style <style lang="scss">
 .sidenav__location-picture {
-  text-align: center;
   padding-top: 2%;
-}
-.sidenav__location-picture__img {
-  border-radius: 3px;
-  padding-top: 2%;
+  &__img {
+    text-align: center;
+    border-radius: 3px;
+    padding-top: 2%;
+  }
+  &__heading {
+    font-weight: 600;
+  }
+  &__heading::before {
+    content: "";
+    display: inline-block;
+    position: relative;
+    top: calc(-0.1 * 1em);
+    vertical-align: middle;
+    height: 0.9em;
+    margin-right: 10px;
+    border-left: 5px solid #e2e7ec;
+  }
 }
 </style>
 <script>
