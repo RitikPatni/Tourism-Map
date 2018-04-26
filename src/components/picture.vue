@@ -1,6 +1,6 @@
 <template>
   <div class="sidenav__location-picture">
-    <h3 class="sidenav__location-picture__heading">{{`${this.locName[0].name},${this.locName[0].location.city}`}}</h3>
+    <h3 class="sidenav__location-picture__heading">{{`${this.locName[0].name}, ${this.locName[0].location.city}`}}</h3>
     <div class="sidenav__location-picture__img">
       <img v-bind:alt="`${this.locName[0].name}`" class="sidenav__location-picture__img" v-bind:src="photoInfo">
       </img>

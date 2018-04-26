@@ -34,22 +34,12 @@ export default {
   methods: {
     openSideBar() {
       this.show = true;
-      axios
-        .get(
-          "https://maps.googleapis.com/maps/api/directions/json?origin=26,75&destination=30,80&key=AIzaSyBlQcHnS3aeoQhRcZV1S6tSuv79drbh--w"
-        )
-        .then(retrievedData => {
-          console.log(retrievedData);
-        });
     },
     closeSideBar() {
       this.show = false;
     },
     showLocInfo(latlon) {
       this.latlon = latlon;
-      const weatherAPIURL = `http://api.openweathermap.org/data/2.5/weather?lat=${
-        latlon.lat
-      }&lon=${latlon.lng}&appid=2a7dd97fbb1c1d9c7a8497f270032341`;
       const foursquareUrl = "https://api.foursquare.com/v2/venues/search?ll=";
       const foursquarePhotoUrl = "https://api.foursquare.com/v2/venues/";
       const foursquareSecretKey =
@@ -63,25 +53,13 @@ export default {
       let endPoint = `${foursquareUrl}${latlon.lat},${
         latlon.lng
       }${foursquareClientId}${foursquareSecretKey}`;
+      let weatherAPIURL = `https://api.weatherbit.io/v2.0/current?&lat=${
+        latlon.lat
+      }&lon=${latlon.lng}&key=7239a913194d4caab598ef99121895f3`;
       axios
         .get(weatherAPIURL)
         .then(response => {
           this.weatherInfo = response.data;
-          self = this;
-          convertTime(
-            this.weatherInfo.sys.sunrise,
-            this.weatherInfo.sys.sunset
-          );
-          function convertTime(sunrise, sunset) {
-            let rise = new Date(sunrise * 1000);
-            let set = new Date(sunset * 1000);
-            let riseHours = rise.getHours();
-            let setHours = set.getHours();
-            let riseMin = "0" + rise.getMinutes();
-            let setMin = "0" + set.getMinutes();
-            self.sun.rise = `${riseHours}:${riseMin.substr(-2)}`;
-            self.sun.set = `${setHours}:${setMin.substr(-2)}`;
-          }
         })
         .catch(error => console.log(error));
       axios
