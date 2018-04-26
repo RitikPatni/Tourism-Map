@@ -1,55 +1,55 @@
 <template>
-  <div class="sidenav__weather ">
-    <h3 class="sidenav__weather__heading">WEATHER</h3>
-    <div class="sidenav__weather__widget">
-      <div class="sidenav__weather__widget__box sidenav__weather__widget__box--sunrise">
-        <div class="sidenav__weather__widget__box__icon">
+  <div class="weather ">
+    <h3 class="weather__heading">WEATHER</h3>
+    <div class="weather__widget">
+      <div class="weather__widget__box weather__widget__box--sunrise">
+        <div class="weather__widget__box__icon">
           🌅
         </div>
-        <div class="sidenav__weather__widget__box__content">
-          <div class="sidenav__weather__widget__box__content__context">
+        <div class="weather__widget__box__content">
+          <div class="weather__widget__box__content__context">
             SUNRISE
           </div>
-          <div class="sidenav__weather__widget__box__content__value">
+          <div class="weather__widget__box__content__value">
             {{`${this.weatherInfo.data[0].sunrise}`}}
           </div>
         </div>
       </div>
-      <div class="sidenav__weather__widget__box sidenav__weather__widget__box--sunset">
-        <div class="sidenav__weather__widget__box__icon">
+      <div class="weather__widget__box weather__widget__box--sunset">
+        <div class="weather__widget__box__icon">
           🌅
         </div>
-        <div class="sidenav__weather__widget__box__content">
-          <div class="sidenav__weather__widget__box__content__context">
+        <div class="weather__widget__box__content">
+          <div class="weather__widget__box__content__context">
             SUNSET
           </div>
-          <div class="sidenav__weather__widget__box__content__value">
+          <div class="weather__widget__box__content__value">
             {{`${this.weatherInfo.data[0].sunset}`}}
           </div>
         </div>
       </div>
-      <div class="sidenav__weather__widget__box sidenav__weather__widget__box--wind">
-        <div class="sidenav__weather__widget__box__icon">
+      <div class="weather__widget__box weather__widget__box--wind">
+        <div class="weather__widget__box__icon">
           💨
         </div>
-        <div class="sidenav__weather__widget__box__content">
-          <div class="sidenav__weather__widget__box__content__context">
+        <div class="weather__widget__box__content">
+          <div class="weather__widget__box__content__context">
             WIND
           </div>
-          <div class="sidenav__weather__widget__box__content__value">
+          <div class="weather__widget__box__content__value">
             {{`${this.weatherInfo.data[0].wind_spd.toFixed(2)} K/H`}}
           </div>
         </div>
       </div>
-      <div class="sidenav__weather__widget__box sidenav__weather__widget__box--temp">
-        <div class="sidenav__weather__widget__box__icon">
+      <div class="weather__widget__box weather__widget__box--temp">
+        <div class="weather__widget__box__icon">
           💨
         </div>
-        <div class="sidenav__weather__widget__box__content">
-          <div class="sidenav__weather__widget__box__content__context">
+        <div class="weather__widget__box__content">
+          <div class="weather__widget__box__content__context">
             WIND
           </div>
-          <div class="sidenav__weather__widget__box__content__value">
+          <div class="weather__widget__box__content__value">
             {{`${this.weatherInfo.data[0].temp.toFixed(1)} °C `}}
           </div>
         </div>
@@ -59,8 +59,12 @@
   </div>
 </template>
 <style lang="scss">
-.sidenav__weather {
+.weather {
   margin-top: 10%;
+  &__heading {
+    font-weight: 600;
+    color: #9fa9b5;
+  }
   &__widget {
     max-height: 20vh;
     width: 100%;
@@ -97,10 +101,6 @@
         }
       }
     }
-  }
-  &__heading {
-    font-weight: 600;
-    color: #9fa9b5;
   }
 }
 </style>

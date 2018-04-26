@@ -1,14 +1,14 @@
 <template>
-  <div class="sidenav__location-picture">
-    <h3 class="sidenav__location-picture__heading">{{`${this.locName[0].name}, ${this.locName[0].location.city}`}}</h3>
-    <div class="sidenav__location-picture__img">
-      <img v-bind:alt="`${this.locName[0].name}`" class="sidenav__location-picture__img" v-bind:src="photoInfo">
+  <div class="location-picture">
+    <h3 class="location-picture__heading">{{`${this.locName[0].name}, ${this.locName[0].location.city}`}}</h3>
+    <div class="location-picture__img">
+      <img v-bind:alt="`${this.locName[0].name}`" class="location-picture__img" v-bind:src="photoInfo">
       </img>
     </div>
   </div>
 </template>
 <style <style lang="scss">
-.sidenav__location-picture {
+.location-picture {
   padding-top: 2%;
   &__img {
     text-align: center;

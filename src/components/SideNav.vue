@@ -5,6 +5,7 @@
         <div class="container">
           <locPic :locName="mapInfo" :photoInfo="photoInfo"></locPic>
           <weather :weatherInfo="weatherInfo" :sun="sun"></weather>
+          <locInfo></locInfo>
         </div>
       </div>
     </transition>
@@ -38,11 +39,13 @@
 <script>
 import weather from "./weather";
 import locPic from "./picture";
+import locInfo from "./LocInfo";
 export default {
   name: "side-nav",
   components: {
     weather,
-    locPic
+    locPic,
+    locInfo
   },
   props: {
     show: {
