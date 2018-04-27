@@ -2,7 +2,8 @@
   <div class="location-picture">
     <h3 class="location-picture__heading">{{`${this.locName[0].name}, ${this.locName[0].location.city}`}}</h3>
     <div class="location-picture__img">
-      <img v-bind:alt="`${this.locName[0].name}`" class="location-picture__img" v-bind:src="photoInfo">
+
+      <img v-for="photo in multiPhotoUrl" v-bind:alt="`${this.locName[0].name}`" class="location-picture__img" v-bind:src="photo">
       </img>
     </div>
   </div>
@@ -38,6 +39,9 @@ export default {
       required: true
     },
     photoInfo: {
+      required: true
+    },
+    multiPhotoUrl: {
       required: true
     }
   }
