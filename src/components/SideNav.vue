@@ -3,7 +3,7 @@
     <transition name="slide-fade">
       <div v-if="show" class="sidenav">
         <div class="container">
-          <locPic :locName="mapInfo" :photoInfo="photoInfo" :multiPhotoUrl="multiPhotoUrl"></locPic>
+          <locPic :locName="mapInfo" :photoInfo="photoInfo"></locPic>
           <weather :weatherInfo="weatherInfo" :sun="sun"></weather>
           <locInfo></locInfo>
         </div>
@@ -56,9 +56,6 @@ export default {
       required: true
     },
     latlon: {
-      required: true
-    },
-    multiPhotoUrl: {
       required: true
     },
     photoInfo: {

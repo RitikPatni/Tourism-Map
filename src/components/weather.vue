@@ -43,11 +43,11 @@
       </div>
       <div class="weather__widget__box weather__widget__box--temp">
         <div class="weather__widget__box__icon">
-          💨
+          <img :src="`/home/ritik_0003/Documents/Github/Tourism-Map/src/components/icons/${this.weatherInfo.data[0].weather.icon}.png`">
         </div>
         <div class="weather__widget__box__content">
           <div class="weather__widget__box__content__context">
-            WIND
+            TEMP
           </div>
           <div class="weather__widget__box__content__value">
             {{`${this.weatherInfo.data[0].temp.toFixed(1)} °C `}}

@@ -2,7 +2,7 @@
   <div id="app">
     <Header></Header>
     <div class="wrapper">
-      <side-nav :show="show" :mapInfo="info" :latlon="latlon" :photoInfo="photoInfo" :weatherInfo="weatherInfo" :sun="sun" :multiPhotoUrl="multiPhotoUrl"></side-nav>
+      <side-nav :show="show" :mapInfo="info" :latlon="latlon" :photoInfo="photoInfo" :weatherInfo="weatherInfo" :sun="sun"></side-nav>
       <google-map name="tourist-map" @locdata="showLocInfo" @openSideBar="openSideBar" @closeSideBar="closeSideBar"></google-map>
     </div>
   </div>
@@ -14,6 +14,7 @@ import reset from "reset-css";
 import Header from "./components/Header.vue";
 import SideNav from "./components/SideNav";
 import googleMap from "./components/Map";
+
 export default {
   name: "app",
   components: {
@@ -76,26 +77,11 @@ export default {
             .then(photoResponse => {
               console.log(photoResponse);
               if (photoResponse.data.response.photos.count != 0) {
-                for (let [
-                  index,
-                  val
-                ] of photoResponse.data.response.photos.items.entries()) {
-                  this.multiPhotoUrl.push(
-                    `${
-                      photoResponse.data.response.photos.items[index].prefix
-                    }250x200${
-                      photoResponse.data.response.photos.items[index].suffix
-                    }`
-                  ),
-                    console.log(index, val);
-                }
                 let photoUrl = `${
                   photoResponse.data.response.photos.items[0].prefix
                 }250x200${photoResponse.data.response.photos.items[0].suffix}`;
                 this.photoInfo = photoUrl;
               } else {
-                this.multiPhotoUrl = [];
-                this.multiPhotoUrl.push("http://via.placeholder.com/250x200");
                 this.photoInfo = "http://via.placeholder.com/250x200";
               }
             })

@@ -16,6 +16,7 @@
     "reset-css": "^3.0.0",
     "ssri": "^6.0.0",
     "vue": "^2.5.16",
+    "vue-carousel": "^0.7.3",
     "vue-router": "^3.0.1",
     "vue2-google-maps": "^0.8.12"
   },
