@@ -4,8 +4,8 @@
       <div v-if="show" class="sidenav">
         <div class="container">
           <locPic :locName="mapInfo" :photoInfo="photoInfo"></locPic>
-          <weather :weatherInfo="weatherInfo" :sun="sun"></weather>
-          <locInfo></locInfo>
+          <weather :weatherInfo="weatherInfo"></weather>
+          <locInfo :iconUrl="iconUrl" :locName="mapInfo"></locInfo>
         </div>
       </div>
     </transition>
@@ -64,7 +64,7 @@ export default {
     weatherInfo: {
       required: true
     },
-    sun: {
+    iconUrl: {
       required: true
     }
   },

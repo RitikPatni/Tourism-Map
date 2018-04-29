@@ -43,7 +43,7 @@
       </div>
       <div class="weather__widget__box weather__widget__box--temp">
         <div class="weather__widget__box__icon">
-          <img :src="`/home/ritik_0003/Documents/Github/Tourism-Map/src/components/icons/${this.weatherInfo.data[0].weather.icon}.png`">
+          <img class="weather__widget__box__icon__img" :src="`https://raw.githubusercontent.com/RitikPatni/Tourism-Map/master/src/components/icons/${this.weatherInfo.data[0].weather.icon}.png`">
         </div>
         <div class="weather__widget__box__content">
           <div class="weather__widget__box__content__context">
@@ -83,6 +83,11 @@
         position: absolute;
         margin-left: 14px;
         line-height: 4.8vh;
+        &__img {
+          width: 30px;
+          height: 30px;
+          margin-top: 24%;
+        }
       }
       &__content {
         padding: 0.5rem 1rem 0rem;

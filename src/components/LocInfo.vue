@@ -5,7 +5,17 @@
     </div>
     <ul class="location-info__detail ">
       <li class="location-info__detail__item">
-        State
+        <div class="location-info__detail__item__cat">
+          Category
+        </div>
+        <div class="location-info__detail__item__name">
+          <div class="location-info__detail__item__name__image">
+            <img :src="this.iconUrl" alt="">
+          </div>
+          <div class="location-info__detail__item__name__text">
+            {{`${this.locName[0].categories[0].name}`}}
+          </div>
+        </div>
       </li>
       <li class="location-info__detail__item">
         GPS
@@ -23,15 +33,30 @@
   &__detail {
     &__item {
       height: 5vh;
+      line-height: 5vh;
       display: flex;
-      justify-content: center;
-      align-content: center;
-      flex-direction: column;
       padding-left: 8%;
       border-radius: 8px;
+      &__cat {
+        width: 38.1%;
+      }
+      &__name {
+        width: 71%;
+        padding-left: 10%;
+        display: flex;
+        &__image {
+          width: 44px;
+          height: 5vh;
+        }
+        &__text {
+          width: calc(100% - 44px);
+          line-height: 5vh;
+        }
+      }
     }
     li:nth-of-type(odd) {
-      background: #dcdfe4;
+      background: #000;
+      color: #fafafa;
     }
 
     li:first-of-type {
@@ -42,6 +67,14 @@
 </style>
 <script>
 export default {
-  name: "locInfo"
+  name: "locInfo",
+  props: {
+    locName: {
+      required: true
+    },
+    iconUrl: {
+      required: true
+    }
+  }
 };
 </script>

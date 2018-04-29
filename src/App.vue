@@ -2,7 +2,7 @@
   <div id="app">
     <Header></Header>
     <div class="wrapper">
-      <side-nav :show="show" :mapInfo="info" :latlon="latlon" :photoInfo="photoInfo" :weatherInfo="weatherInfo" :sun="sun"></side-nav>
+      <side-nav :show="show" :iconUrl="iconUrl" :mapInfo="info" :latlon="latlon" :photoInfo="photoInfo" :weatherInfo="weatherInfo"></side-nav>
       <google-map name="tourist-map" @locdata="showLocInfo" @openSideBar="openSideBar" @closeSideBar="closeSideBar"></google-map>
     </div>
   </div>
@@ -29,8 +29,7 @@ export default {
       latlon: null,
       photoInfo: null,
       weatherInfo: null,
-      sun: { set: null, rise: null },
-      multiPhotoUrl: []
+      iconUrl: null
     };
   },
   methods: {
@@ -68,6 +67,9 @@ export default {
         .get(endPoint)
         .then(response => {
           this.info = response.data.response.venues;
+          this.iconUrl = `${this.info[0].categories[0].icon.prefix}32${
+            this.info[0].categories[0].icon.suffix
+          }`;
           let photoEndPoint = `${foursquarePhotoUrl}${
             this.info[0].id
           }/photos?${foursquarePhotoClientId}${foursquarePhotoSecretKey}`;
