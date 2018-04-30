@@ -16,6 +16,7 @@
   width: 300px;
   height: 100vh;
   z-index: 2;
+  background: #2f3647;
 }
 .sidenav__navigate {
   background: darkslategray;

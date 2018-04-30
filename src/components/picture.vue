@@ -2,7 +2,7 @@
   <div class="location-picture">
     <h3 class="location-picture__heading">{{`${this.locName[0].name}, ${this.locName[0].location.city}`}}</h3>
     <div class="location-picture__img">
-      <img :alt="`${this.locName[0].name}`" class="location-picture__img" :src="this.photoInfo" />
+      <img v-if="this.photoInfo!=null" :alt="`${this.locName[0].name}`" class="location-picture__img" :src="this.photoInfo" />
     </div>
   </div>
 </template>
@@ -16,6 +16,11 @@
   }
   &__heading {
     font-weight: 600;
+    color: #9fa9b5;
+    height: 8vh;
+    // line-height: 8vh;
+    font-size: 1.3rem;
+    margin-top: 7%;
   }
   &__heading::before {
     content: "";

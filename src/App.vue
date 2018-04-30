@@ -1,9 +1,8 @@
 <template>
   <div id="app">
-    <Header></Header>
     <div class="wrapper">
       <side-nav :show="show" :iconUrl="iconUrl" :mapInfo="info" :latlon="latlon" :photoInfo="photoInfo" :weatherInfo="weatherInfo"></side-nav>
-      <google-map name="tourist-map" @locdata="showLocInfo" @openSideBar="openSideBar" @closeSideBar="closeSideBar"></google-map>
+      <google-map name="tourist-map" @locdata="showLocInfo" @openSideBar="openSideBar" @closeSideBar="closeSideBar" @allMarkerData="allMarkerData"></google-map>
     </div>
   </div>
 </template>
@@ -11,14 +10,12 @@
 <script>
 import axios from "axios";
 import reset from "reset-css";
-import Header from "./components/Header.vue";
 import SideNav from "./components/SideNav";
 import googleMap from "./components/Map";
 
 export default {
   name: "app",
   components: {
-    Header,
     SideNav,
     googleMap
   },
@@ -29,7 +26,9 @@ export default {
       latlon: null,
       photoInfo: null,
       weatherInfo: null,
-      iconUrl: null
+      iconUrl: null,
+      allMarkerInfo: null,
+      userQuery: ""
     };
   },
   methods: {
@@ -38,6 +37,9 @@ export default {
     },
     closeSideBar() {
       this.show = false;
+    },
+    allMarkerData(allData) {
+      this.allMarkerInfo = allData;
     },
     showLocInfo(latlon) {
       this.latlon = latlon;
@@ -73,18 +75,16 @@ export default {
           let photoEndPoint = `${foursquarePhotoUrl}${
             this.info[0].id
           }/photos?${foursquarePhotoClientId}${foursquarePhotoSecretKey}`;
-          console.log(photoEndPoint);
           axios
             .get(photoEndPoint)
             .then(photoResponse => {
-              console.log(photoResponse);
               if (photoResponse.data.response.photos.count != 0) {
                 let photoUrl = `${
                   photoResponse.data.response.photos.items[0].prefix
                 }250x200${photoResponse.data.response.photos.items[0].suffix}`;
                 this.photoInfo = photoUrl;
               } else {
-                this.photoInfo = "http://via.placeholder.com/250x200";
+                this.photoInfo = null;
               }
             })
             .catch(error => console.log(error));

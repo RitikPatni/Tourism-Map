@@ -117,9 +117,6 @@ export default {
   props: {
     weatherInfo: {
       required: true
-    },
-    sun: {
-      required: true
     }
   }
 };

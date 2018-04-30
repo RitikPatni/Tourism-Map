@@ -18,7 +18,14 @@
         </div>
       </li>
       <li class="location-info__detail__item">
-        GPS
+        <div class="location-info__detail__item__cat">
+          GPS
+        </div>
+        <div class="location-info__detail__item__name">
+          <div class="location-info__detail__item__name__text">
+            {{`${this.locName[0].location.lat.toFixed(1)}, ${this.locName[0].location.lng.toFixed(1)}`}}
+          </div>
+        </div>
       </li>
     </ul>
   </div>
@@ -32,8 +39,8 @@
   }
   &__detail {
     &__item {
-      height: 5vh;
-      line-height: 5vh;
+      height: 6vh;
+      line-height: 6vh;
       display: flex;
       padding-left: 8%;
       border-radius: 8px;
@@ -46,20 +53,23 @@
         display: flex;
         &__image {
           width: 44px;
-          height: 5vh;
+          height: 6vh;
         }
         &__text {
           width: calc(100% - 44px);
-          line-height: 5vh;
+          line-height: 6vh;
         }
       }
     }
     li:nth-of-type(odd) {
-      background: #000;
+      background: #191919;
       color: #fafafa;
     }
+    li:nth-of-type(even) {
+      background: #fafafa;
+    }
 
-    li:first-of-type {
+    li {
       margin-top: 5%;
     }
   }

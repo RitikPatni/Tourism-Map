@@ -1,5 +1,6 @@
 <template>
-  <div class="google-map" :id="mapName"></div>
+  <div class="google-map" :id="mapName">
+  </div>
 </template>
 <script>
 import axios from "axios";
@@ -16,7 +17,8 @@ export default {
       markers: [],
       show: true,
       currentMarker: null,
-      markerInfo: ""
+      markerInfo: "",
+      userQuery: ""
     };
   },
   mounted: function() {
@@ -26,6 +28,7 @@ export default {
       )
       .then(retrievedData => {
         this.markerCoordinates = retrievedData.data;
+        this.$emit("allMarkerData", this.markerCoordinates);
         this.bounds = new google.maps.LatLngBounds();
         const element = document.getElementById(this.mapName);
         const mapCentre = this.markerCoordinates[0];
@@ -60,7 +63,6 @@ export default {
                 lat: this.getPosition().lat(),
                 lng: this.getPosition().lng()
               };
-              console.log(this.map.getCenter().lat());
               if (markerInfo.lat == markerPrevLoc.lat) {
                 if (!mapZoomStatus) {
                   this.map.setZoom(7);
@@ -74,10 +76,8 @@ export default {
                   self.$emit("closeSideBar");
                 }
               } else {
-                console.log(markerPrevLoc);
                 self.$emit("openSideBar");
                 self.$emit("locdata", markerInfo);
-                // self.$emit("getWeatherData");
                 this.map.setZoom(7);
                 this.map.setCenter(marker.getPosition());
               }
@@ -92,6 +92,10 @@ export default {
 };
 </script>
 <style scoped>
+.abcdefgh {
+  height: 20vh;
+  width: 30vw;
+}
 .google-map {
   width: 100vw;
   height: 100vh;
