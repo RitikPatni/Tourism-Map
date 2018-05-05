@@ -44,11 +44,11 @@ export default {
     showLocInfo(latlon) {
       this.latlon = latlon;
       const foursquareUrl = "https://api.foursquare.com/v2/venues/search?ll=";
-      const foursquarePhotoUrl = "https://api.foursquare.com/v2/venues/";
       const foursquareSecretKey =
         "&client_secret=RE40UE33TGTIIVZEIWIRW3KNHDG3E3UPRLZLE40O1PDDXOIP&v=20180312";
       const foursquareClientId =
         "&limit=1&client_id=JVYYDZMWQWFNXS5EAYNSCTUKMA2DWO2ZNJRMFAIQXXT5WX5S";
+      const foursquarePhotoUrl = "https://api.foursquare.com/v2/venues/";
       const foursquarePhotoClientId =
         "&client_id=JVYYDZMWQWFNXS5EAYNSCTUKMA2DWO2ZNJRMFAIQXXT5WX5S";
       const foursquarePhotoSecretKey =

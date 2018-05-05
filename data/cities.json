@@ -1,32 +1,172 @@
-[
-  {
-    "latitude": 20.5937,
-    "longitude": 78.9629,
-    "name": "Centre Of India"
+[{
+    "latitude": 19.8048,
+    "longitude": 85.8179,
+    "name": "Jagannath Temple"
   },
   {
-    "latitude": 34.083656,
-    "longitude": 74.797371,
-    "name": "Srinagar"
+    "latitude": 9.2881,
+    "longitude": 79.3174,
+    "name": "Ramanatha Swamy Temple"
   },
   {
-    "latitude": 8.0883,
-    "longitude": 77.5385,
-    "name": "KanyaKumari"
+    "latitude": 22.2376,
+    "longitude": 68.9674,
+    "name": "Dwarakadhish Temple"
   },
   {
-    "latitude": 26.9372,
-    "longitude": 75.8152,
-    "name": "NaharGarh"
+    "latitude": 34.4269,
+    "longitude": 75.7459,
+    "name": "Drass"
   },
   {
-    "latitude": 26.9851,
-    "longitude": 75.8456,
-    "name": "JaiGarh"
+    "latitude": 32.2396,
+    "longitude": 77.1887,
+    "name": "Manali"
   },
   {
-    "latitude": 26.9258,
-    "longitude": 75.8237,
-    "name": "CityPalace"
+    "latitude": 30.7525,
+    "longitude": 76.8101,
+    "name": "Rock Garden"
+  },
+  {
+    "latitude": 34.148,
+    "longitude": 74.8704,
+    "name": "Shalimar Bagh"
+  },
+  {
+    "latitude": 22.6767,
+    "longitude": 75.8558,
+    "name": "Atal Bihari Vajpayee Regional Park"
+  },
+  {
+    "latitude": 26.2303,
+    "longitude": 78.1689,
+    "name": "Gwalior Fort"
+  },
+  {
+    "latitude": 26.29784,
+    "longitude": 73.01842,
+    "name": "Mehrangarh Fort"
+  },
+  {
+    "latitude": 28.6562,
+    "longitude": 77.241,
+    "name": "Red Fort"
+  },
+  {
+    "latitude": 24.8863,
+    "longitude": 74.647,
+    "name": "Chittorgarh Fort"
+  },
+  {
+    "latitude": 32.0873,
+    "longitude": 76.2561,
+    "name": "Kangra Fort"
+  },
+  {
+    "latitude": 26.9127,
+    "longitude": 70.9126,
+    "name": "Jaisalmer Fort"
+  },
+  {
+    "latitude": 26.9859,
+    "longitude": 75.8507,
+    "name": "Amer Fort"
+  },
+  {
+    "latitude": 32.2396,
+    "longitude": 77.1887,
+    "name": "Manali"
+  },
+  {
+    "latitude": 34.0484,
+    "longitude": 74.3805,
+    "name": "Gulmarg"
+  },
+  {
+    "latitude": 24.5926,
+    "longitude": 72.7156,
+    "name": "Mount Abu"
+  },
+  {
+    "latitude": 27.3389,
+    "longitude": 88.6065,
+    "name": "Gangtok"
+  },
+
+  {
+    "latitude": 34.1106,
+    "longitude": 74.8683,
+    "name": "Dal Lake"
+  },
+  {
+    "latitude": 24.572,
+    "longitude": 73.679,
+    "name": "Pichola Lake"
+  },
+  {
+    "latitude": 22.5579,
+    "longitude": 88.3511,
+    "name": "Indian Museum"
+  },
+  {
+    "latitude": 28.6118,
+    "longitude": 77.2195,
+    "name": "National Museum"
+  },
+  {
+    "latitude": 25.6127,
+    "longitude": 85.1332,
+    "name": "Patna Museum"
+  },
+  {
+    "latitude": 22.312,
+    "longitude": 73.1887,
+    "name": "Vadodara Museum And Picture Gallery"
+  },
+  {
+    "latitude": 28.5859,
+    "longitude": 77.1795,
+    "name": "National Rail Museum"
+  },
+  {
+    "latitude": 13.6833,
+    "longitude": 79.3474,
+    "name": "Tirumala Venkateswara Temple"
+  },
+  {
+    "latitude": 33.0308,
+    "longitude": 74.949,
+    "name": "Vaishno Devi Temple"
+  },
+  {
+    "latitude": 8.4828,
+    "longitude": 76.9436,
+    "name": "Padmanabhaswamy Temple"
+  },
+  {
+    "latitude": 25.3109,
+    "longitude": 83.0107,
+    "name": "Kashi Vishwanath Temple"
+  },
+  {
+    "latitude": 9.9195,
+    "longitude": 78.1193,
+    "name": "Meenakshi Amman Temple"
+  },
+  {
+    "latitude": 34.216,
+    "longitude": 75.503,
+    "name": "Amarnath Temple"
+  },
+  {
+    "latitude": 19.8876,
+    "longitude": 86.0945,
+    "name": "Konark Sun Temple"
+  },
+  {
+    "latitude": 31.62,
+    "longitude": 74.8765,
+    "name": "Golden Temple"
   }
 ]
