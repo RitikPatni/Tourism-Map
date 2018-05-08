@@ -3,68 +3,81 @@
   font-family: "Roboto", sans-serif !important;
 }
 
-.toggle__button {
-  outline: none;
-  height: 40px;
-  text-align: center;
-  width: 90px;
+.info-box-wrap {
   background: #fff;
-  border: 2px solid #42454c;
-  color: #42454c;
-  letter-spacing: 1px;
-  text-shadow: 0;
-  font-size: 1rem;
-  font-weight: bold;
+  overflow: hidden;
+  box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.08);
+}
+
+.info-box-text-wrap {
+  height: 40px !important;
+  width: 120px;
+  float: left;
+  overflow: hidden;
+}
+
+.action-btns {
+  float: left;
+  width: 70px;
+  overflow: hidden;
+  position: relative;
+  top: 12px;
+  left: 6px;
+}
+
+.action-btns i {
+  font-size: 18px;
+  color: #78a737;
+  margin-left: 3px;
+}
+
+.action-btns i:hover {
+  transition: color 0.5s ease;
+  color: #ccc;
   cursor: pointer;
-  transition: all 0.25s ease;
-  position: fixed;
-  z-index: 1;
 }
 
-.toggle__button--header {
-  top: 0;
+.action-btns i.fa-heart-o {
+  font-weight: bold;
 }
 
-.toggle__button--sidenav {
-  margin-top: 50vh;
+.info-box-text-wrap h6.address {
+  padding: 6px 5px 1px 0;
+  margin: 0 0 0 0;
+  font-family: "Roboto Slab";
+  color: #0c99c8;
+  font-weight: 700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.toggle__button:hover {
-  color: #ffffff;
-  background: #42454c;
+.info-box-text-wrap p {
+  padding: 0 0 0 0;
+  margin: 0 0 0 0;
 }
 
-.close {
-  position: absolute;
-  right: 32px;
-  top: 32px;
-  width: 32px;
-  height: 32px;
-  opacity: 0.3;
+.info-box-text-wrap p.price {
+  color: #b25b00;
 }
 
-.close:hover {
-  opacity: 1;
+.info-box-wrap img {
+  width: 40px !important;
+  height: 40px;
+  float: left;
+  margin-right: 10px;
+  padding-top: 0;
+  margin-top: 0;
 }
 
-.close:before,
-.close:after {
-  position: absolute;
-  left: 15px;
+.infoBox:before {
   content: " ";
-  height: 33px;
-  width: 2px;
-  background-color: #fff;
-}
-
-.close:before {
-  transform: rotate(45deg);
-}
-
-.close:after {
-  transform: rotate(-45deg);
-}
-
-.container {
-  margin: 0 25px 0 25px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #fff;
+  position: absolute;
+  top: -10px;
+  left: 130px;
 }

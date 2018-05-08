@@ -2,10 +2,11 @@
   <div>
     <transition name="slide-fade">
       <div v-if="show" class="sidenav">
-        <div class="container">
+        <div class="sidenav__container">
           <locPic :locName="mapInfo" :photoInfo="photoInfo"></locPic>
           <weather :weatherInfo="weatherInfo"></weather>
-          <locInfo :iconUrl="iconUrl" :locName="mapInfo"></locInfo>
+          <locInfo
+           :iconUrl="iconUrl" :locName="mapInfo"></locInfo>
         </div>
       </div>
     </transition>
@@ -17,14 +18,12 @@
   height: 100vh;
   z-index: 2;
   background: #2f3647;
+  &__container {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
 }
-.sidenav__navigate {
-  background: darkslategray;
-  width: 100%;
-  height: 20%;
-  display: flex;
-  align-content: center;
-}
+
 .slide-fade-enter-active {
   transition: all 0.3s ease;
 }

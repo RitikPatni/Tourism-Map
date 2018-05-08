@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^7.2.6",
-    "babel-core": "^6.26.2",
+    "babel-core": "^6.26.3",
     "babel-helper-vue-jsx-merge-props": "^2.0.3",
     "babel-loader": "^7.1.4",
     "babel-plugin-syntax-jsx": "^6.18.0",
@@ -43,7 +43,7 @@
     "ora": "^1.4.0",
     "portfinder": "^1.0.13",
     "postcss-import": "^11.1.0",
-    "postcss-loader": "^2.1.4",
+    "postcss-loader": "^2.1.5",
     "postcss-url": "^7.3.2",
     "rimraf": "^2.6.0",
     "sass-loader": "^6.0.7",

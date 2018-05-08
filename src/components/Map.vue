@@ -375,8 +375,7 @@ export default {
           );
           const marker = new google.maps.Marker({
             position,
-            map: this.map,
-            title: coord.name
+            map: this.map
           });
           this.markers.push(marker);
           self = this;
@@ -447,10 +446,12 @@ export default {
                                               <div class="info-box-text-wrap">
                                                 <h6 class="address">${
                                                   info[0].name
-                                                }, ${info[0].location.city}${
+                                                }, ${info[0].location.city}, ${
                         info[0].postalCode
-                      } ${info[0].state}</h6>
-                                                <p class="price">{{price}}</p>
+                      }, ${info[0].state}</h6>
+                                                <p class="price">Checkins: ${
+                                                  info[0].stats.checkinsCount
+                                                }</p>
                                               </div>
                                               <div class="action-btns"></div>
                                             </div>`;
@@ -473,84 +474,11 @@ export default {
 };
 </script>
 <style scoped>
-.abcdefgh {
-  height: 20vh;
-  width: 30vw;
-}
 .google-map {
   width: 100vw;
   height: 100vh;
   margin: 0 auto;
   background: gray;
   position: relative;
-}
-.info-box-wrap {
-  background: #fff;
-  overflow: hidden;
-  box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.08);
-}
-.info-box-text-wrap {
-  height: 40px !important;
-  width: 120px;
-  float: left;
-  overflow: hidden;
-}
-.action-btns {
-  float: left;
-  width: 70px;
-  overflow: hidden;
-  position: relative;
-  top: 12px;
-  left: 6px;
-}
-.action-btns i {
-  font-size: 18px;
-  color: #78a737;
-  margin-left: 3px;
-}
-.action-btns i:hover {
-  transition: color 0.5s ease;
-  color: #ccc;
-  cursor: pointer;
-}
-.action-btns i.fa-heart-o {
-  font-weight: bold;
-}
-.info-box-text-wrap h6.address {
-  padding: 6px 5px 1px 0;
-  margin: 0 0 0 0;
-  font-family: "Roboto Slab";
-  color: #0c99c8;
-  font-weight: 700;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.info-box-text-wrap p {
-  padding: 0 0 0 0;
-  margin: 0 0 0 0;
-}
-.info-box-text-wrap p.price {
-  color: #b25b00;
-}
-
-.info-box-wrap img {
-  width: 40px !important;
-  height: 40px;
-  float: left;
-  margin-right: 10px;
-  padding-top: 0;
-  margin-top: 0;
-}
-.infoBox:before {
-  content: " ";
-  width: 0;
-  height: 0;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-bottom: 10px solid #fff;
-  position: absolute;
-  top: -10px;
-  left: 130px;
 }
 </style>
