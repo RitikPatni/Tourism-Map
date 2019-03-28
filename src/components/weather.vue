@@ -1,59 +1,45 @@
 <template>
-  <div class="weather ">
+  <div class="weather">
     <h3 class="weather__heading">WEATHER</h3>
     <div class="weather__widget">
       <div class="weather__widget__box weather__widget__box--sunrise">
-        <div class="weather__widget__box__icon">
-          🌅
-        </div>
+        <div class="weather__widget__box__icon">🌅</div>
         <div class="weather__widget__box__content">
-          <div class="weather__widget__box__content__context">
-            SUNRISE
-          </div>
-          <div class="weather__widget__box__content__value">
-            {{`${this.weatherInfo.data[0].sunrise}`}}
-          </div>
+          <div class="weather__widget__box__content__context">SUNRISE</div>
+          <div
+            class="weather__widget__box__content__value"
+          >{{`${this.weatherInfo.data[0].sunrise}`}}</div>
         </div>
       </div>
       <div class="weather__widget__box weather__widget__box--sunset">
-        <div class="weather__widget__box__icon">
-          🌅
-        </div>
+        <div class="weather__widget__box__icon">🌅</div>
         <div class="weather__widget__box__content">
-          <div class="weather__widget__box__content__context">
-            SUNSET
-          </div>
-          <div class="weather__widget__box__content__value">
-            {{`${this.weatherInfo.data[0].sunset}`}}
-          </div>
+          <div class="weather__widget__box__content__context">SUNSET</div>
+          <div class="weather__widget__box__content__value">{{`${this.weatherInfo.data[0].sunset}`}}</div>
         </div>
       </div>
       <div class="weather__widget__box weather__widget__box--wind">
-        <div class="weather__widget__box__icon">
-          💨
-        </div>
+        <div class="weather__widget__box__icon">💨</div>
         <div class="weather__widget__box__content">
-          <div class="weather__widget__box__content__context">
-            WIND
-          </div>
-          <div class="weather__widget__box__content__value">
-            {{`${this.weatherInfo.data[0].wind_spd.toFixed(2)} K/H`}}
-          </div>
+          <div class="weather__widget__box__content__context">WIND</div>
+          <div
+            class="weather__widget__box__content__value"
+          >{{`${this.weatherInfo.data[0].wind_spd.toFixed(2)} K/H`}}</div>
         </div>
       </div>
       <div class="weather__widget__box weather__widget__box--temp">
         <div class="weather__widget__box__icon">
-          <img class="weather__widget__box__icon__img" :src="`https://raw.githubusercontent.com/RitikPatni/Tourism-Map/master/src/components/icons/${this.weatherInfo.data[0].weather.icon}.png`">
+          <img
+            class="weather__widget__box__icon__img"
+            :src="`https://raw.githubusercontent.com/RitikPatni/Tourism-Map/master/src/components/icons/${this.weatherInfo.data[0].weather.icon}.png`"
+          >
         </div>
         <div class="weather__widget__box__content">
-          <div class="weather__widget__box__content__context">
-            TEMP
-          </div>
-          <div class="weather__widget__box__content__value">
-            {{`${this.weatherInfo.data[0].temp.toFixed(1)} °C `}}
-          </div>
+          <div class="weather__widget__box__content__context">TEMP</div>
+          <div
+            class="weather__widget__box__content__value"
+          >{{`${this.weatherInfo.data[0].temp.toFixed(1)} °C `}}</div>
         </div>
-
       </div>
     </div>
   </div>

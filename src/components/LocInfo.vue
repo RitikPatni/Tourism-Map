@@ -1,30 +1,24 @@
 <template>
   <div class="location-info">
-    <div class="location-info__heading">
-      LOCATION DETAILS
-    </div>
-    <ul class="location-info__detail ">
+    <div class="location-info__heading">LOCATION DETAILS</div>
+    <ul class="location-info__detail">
       <li class="location-info__detail__item">
-        <div class="location-info__detail__item__cat">
-          Category
-        </div>
+        <div class="location-info__detail__item__cat">Category</div>
         <div class="location-info__detail__item__name">
           <div class="location-info__detail__item__name__image">
-            <img :src="this.iconUrl" alt="">
+            <img :src="this.iconUrl" alt>
           </div>
-          <div class="location-info__detail__item__name__text">
-            {{`${this.locName[0].categories[0].name}`}}
-          </div>
+          <div
+            class="location-info__detail__item__name__text"
+          >{{`${this.locName[0].categories[0].name}`}}</div>
         </div>
       </li>
       <li class="location-info__detail__item">
-        <div class="location-info__detail__item__cat">
-          GPS
-        </div>
+        <div class="location-info__detail__item__cat">GPS</div>
         <div class="location-info__detail__item__name">
-          <div class="location-info__detail__item__name__text">
-            {{`${this.locName[0].location.lat.toFixed(1)}, ${this.locName[0].location.lng.toFixed(1)}`}}
-          </div>
+          <div
+            class="location-info__detail__item__name__text"
+          >{{`${this.locName[0].location.lat.toFixed(1)}, ${this.locName[0].location.lng.toFixed(1)}`}}</div>
         </div>
       </li>
     </ul>

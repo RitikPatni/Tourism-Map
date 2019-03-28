@@ -1,13 +1,17 @@
 <template>
   <div class="location-picture">
-    <h3 class="location-picture__heading" v-if="this.locName[0].location.city!=null">
-      {{`${this.locName[0].name}, ${this.locName[0].location.city}`}}
-    </h3>
-    <h3 class="location-picture__heading" v-else>
-      {{`${this.locName[0].name}`}}
-    </h3>
+    <h3
+      class="location-picture__heading"
+      v-if="this.locName[0].location.city!=null"
+    >{{`${this.locName[0].name}, ${this.locName[0].location.city}`}}</h3>
+    <h3 class="location-picture__heading" v-else>{{`${this.locName[0].name}`}}</h3>
     <div class="location-picture__img">
-      <img v-if="this.photoInfo!=null" :alt="`${this.locName[0].name}`" class="location-picture__img" :src="this.photoInfo" />
+      <img
+        v-if="this.photoInfo!=null"
+        :alt="`${this.locName[0].name}`"
+        class="location-picture__img"
+        :src="this.photoInfo"
+      >
     </div>
   </div>
 </template>

@@ -1,8 +1,21 @@
 <template>
   <div id="app">
     <div class="wrapper">
-      <side-nav :show="show" :iconUrl="iconUrl" :mapInfo="info" :latlon="latlon" :photoInfo="photoInfo" :weatherInfo="weatherInfo"></side-nav>
-      <google-map name="tourist-map" @locdata="showLocInfo" @openSideBar="openSideBar" @closeSideBar="closeSideBar" @allMarkerData="allMarkerData"></google-map>
+      <side-nav
+        :show="show"
+        :iconUrl="iconUrl"
+        :mapInfo="info"
+        :latlon="latlon"
+        :photoInfo="photoInfo"
+        :weatherInfo="weatherInfo"
+      ></side-nav>
+      <google-map
+        name="tourist-map"
+        @locdata="showLocInfo"
+        @openSideBar="openSideBar"
+        @closeSideBar="closeSideBar"
+        @allMarkerData="allMarkerData"
+      ></google-map>
     </div>
   </div>
 </template>

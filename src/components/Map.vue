@@ -1,6 +1,5 @@
 <template>
-  <div class="google-map" :id="mapName">
-  </div>
+  <div class="google-map" :id="mapName"></div>
 </template>
 <script>
 import axios from "axios";

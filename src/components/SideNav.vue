@@ -5,8 +5,7 @@
         <div class="sidenav__container">
           <locPic :locName="mapInfo" :photoInfo="photoInfo"></locPic>
           <weather :weatherInfo="weatherInfo"></weather>
-          <locInfo
-           :iconUrl="iconUrl" :locName="mapInfo"></locInfo>
+          <locInfo :iconUrl="iconUrl" :locName="mapInfo"></locInfo>
         </div>
       </div>
     </transition>
